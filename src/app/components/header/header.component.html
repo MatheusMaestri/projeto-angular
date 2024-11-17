@@ -1,0 +1,34 @@
+<mat-toolbar class="header">
+  <span class="mat-toolbar-title imagem">
+    <img src="../../assets/img/empresa.png" alt="logo" style="width: 150px;">
+  </span>
+
+  <nav class="nav-links" *ngIf="!isMobile">
+    <a mat-button routerLink="/inicio">Início</a>
+    <a mat-button routerLink="/versao">Versões</a>
+    <a mat-button routerLink="/contato">Contatos</a>
+    <a mat-button routerLink="/anydesk">Anydesk</a>
+  </nav>
+
+  <mat-menu #mobileMenu="matMenu">
+    <button mat-menu-item routerLink="/inicio">Início</button>
+    <button mat-menu-item routerLink="/versao">Versões</button>
+    <button mat-menu-item routerLink="/contato">Contatos</button>
+    <button mat-menu-item routerLink="/anydesk">Anydesk</button>
+  </mat-menu>
+
+  <div class="responsivo">
+    <button mat-icon-button *ngIf="isMobile" [matMenuTriggerFor]="mobileMenu">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <button mat-icon-button [matMenuTriggerFor]="userMenu">
+      <mat-icon>person</mat-icon>
+    </button>
+  </div>
+  
+  <mat-menu #userMenu="matMenu">
+    <button mat-menu-item routerLink="/perfil">Perfil</button>
+    <button *ngIf="isAdmin" mat-menu-item routerLink="/usuarios">Usuarios</button>
+    <button mat-menu-item color="warn" (click)="logout()">Sair</button>
+  </mat-menu>
+</mat-toolbar>

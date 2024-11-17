@@ -1,0 +1,24 @@
+<mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
+
+<div class="main-login">
+    <div class="login-esquerdo">
+        <h1><span>Faça Login</span><br> Para verificar a documentação.</h1>
+        <img src="../../assets/img/documentacao.png" class="imagem-esquerda" alt="">
+    </div>
+    <div class="login-direito">
+        <div class="card-login">
+            <h1>Login</h1>
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <div class="textfield">
+                    <label for="email">Email</label>
+                    <input type="email" formControlName="email" placeholder="Usuário" required autocomplete="username">
+                </div>
+                <div class="textfield">
+                    <label for="senha">Senha</label>
+                    <input type="password" formControlName="senha" placeholder="Senha" required autocomplete="current-password">
+                </div>
+                <button type="submit"><span>Entrar</span></button>
+            </form>            
+        </div>
+    </div>
+</div>

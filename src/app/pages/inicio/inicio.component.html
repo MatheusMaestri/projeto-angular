@@ -1,0 +1,13 @@
+<app-header></app-header>
+<div *ngIf="loading" class="carregando">Carregando, por favor aguarde...</div>
+<div class="inicio-container" *ngIf="!loading">
+  <main>
+    <app-sistema-card
+      *ngFor="let sistema of sistemas"
+      [sistemaNome]="sistema.nome"
+      [versaoAtual]="sistema.versaoAtual"
+      [proximaVersao]="sistema.proximaVersao"
+      [chamadasResolvidas]="sistema.chamadasResolvidas">
+    </app-sistema-card>
+  </main>
+</div>

@@ -1,0 +1,24 @@
+<div class="modal fade" id="chamadaModal" tabindex="-1" role="dialog" aria-labelledby="chamadaModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title mb-0" id="chamadaModalLabel">Adicionar/Editar Chamada</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group mb-3">
+          <label for="chamadaNumber">Número da Chamada</label>
+          <input type="number" [(ngModel)]="chamada.numero" class="form-control" placeholder="Número da Chamada" required>
+        </div>
+        <div class="form-group">
+          <label for="chamadaDescription">Descrição da Chamada</label>
+          <div id="editor-container" class="form-control" style="height: 500px;"></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="fecharModal()">Cancelar</button>
+        <button type="button" class="btn btn-primary" (click)="saveChamada()">Salvar</button>
+      </div>
+    </div>
+  </div>
+</div>

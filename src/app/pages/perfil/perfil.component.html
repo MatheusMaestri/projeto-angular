@@ -1,0 +1,8 @@
+<app-header></app-header>
+
+<main class="perfil-container">
+  <h1>Meu Perfil</h1>
+  <app-perfil-form *ngIf="usuario" [usuario]="usuario" (atualizarPerfilEvent)="atualizarPerfil($event)"></app-perfil-form>
+</main>
+
+

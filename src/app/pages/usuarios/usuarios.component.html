@@ -1,0 +1,12 @@
+<app-header></app-header>
+
+<main>
+  <div class="container">
+    <button mat-raised-button color="primary" data-bs-toggle="modal" data-bs-target="#addUsuarioModal">Adicionar Usuário</button>
+
+    <app-usuario-lista [usuarios]="usuarios" (removerUsuarioEvent)="removerUsuario($event)"></app-usuario-lista>
+
+    <app-usuario-modal (adicionarUsuarioEvent)="adicionarUsuario($event)"></app-usuario-modal>
+  </div>
+</main>
+

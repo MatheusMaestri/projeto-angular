@@ -1,0 +1,23 @@
+
+.input-field {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.admin-toggle {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+}
+
+
+.button-container {
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1rem;
+}
+  

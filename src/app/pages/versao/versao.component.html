@@ -1,0 +1,151 @@
+<app-header></app-header>
+
+<main>
+    <mat-tab-group>
+        <mat-tab label="Gestor Matriz"> 
+            <div class="mat-elevation-z8">
+                <table mat-table [dataSource]="dataSourceGM" class="tabela">
+                  <ng-container matColumnDef="versao">
+                    <th mat-header-cell *matHeaderCellDef class="verde"> Versão </th>
+                    <td mat-cell *matCellDef="let element" (click)="verVersao(element)"> {{element.versao}} </td>
+                  </ng-container>
+            
+                  <ng-container matColumnDef="descricao">
+                    <th mat-header-cell *matHeaderCellDef class="verde"> Descrição </th>
+                    <td mat-cell *matCellDef="let element" (click)="verVersao(element)"> {{element.descricao}} </td>
+                  </ng-container>
+            
+                  <ng-container matColumnDef="chamadasResolvidas">
+                    <th mat-header-cell *matHeaderCellDef class="verde"> Chamadas Resolvidas </th>
+                    <td mat-cell *matCellDef="let element" (click)="verVersao(element)"> {{element.chamadasResolvidas}} </td>
+                  </ng-container>
+            
+                  <ng-container matColumnDef="actions">
+                    <th mat-header-cell *matHeaderCellDef class="verde"></th>
+                    <td mat-cell *matCellDef="let element">
+                      <button *ngIf="isEditing" class="btn btn-link" (click)="editarVersao(element)">Editar</button>
+                      <button (click)="excluir(element)" *ngIf="isEditing" class="btn btn-danger">Excluir</button>
+                    </td>
+                  </ng-container>
+
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+            
+                <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+              </div>
+        </mat-tab>
+
+        <mat-tab label="ShowRoom Online"> 
+            <div class="mat-elevation-z8">
+                <table mat-table [dataSource]="dataSourceSH" class="tabela">
+              
+                  <ng-container matColumnDef="versao">
+                    <th mat-header-cell *matHeaderCellDef class="azul"> Versão </th>
+                    <td mat-cell *matCellDef="let element" (click)="verVersao(element)"> {{element.versao}} </td>
+                  </ng-container>
+              
+                  <ng-container matColumnDef="descricao">
+                    <th mat-header-cell *matHeaderCellDef class="azul"> Descrição </th>
+                    <td mat-cell *matCellDef="let element" (click)="verVersao(element)"> {{element.descricao}} </td>
+                  </ng-container>
+              
+                  <ng-container matColumnDef="chamadasResolvidas">
+                    <th mat-header-cell *matHeaderCellDef class="azul"> Chamadas Resolvidas </th>
+                    <td mat-cell *matCellDef="let element" (click)="verVersao(element)"> {{element.chamadasResolvidas}} </td>
+                  </ng-container>
+              
+                  <ng-container matColumnDef="actions">
+                    <th mat-header-cell *matHeaderCellDef class="azul"></th>
+                    <td mat-cell *matCellDef="let element">
+                      <button *ngIf="isEditing" class="btn btn-link" (click)="editarVersao(element)">Editar</button>
+                      <button (click)="excluir(element)" *ngIf="isEditing" class="btn btn-danger">Excluir</button>
+                    </td>
+                  </ng-container>
+
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+              
+                <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+            </div>     
+        </mat-tab>
+
+        <mat-tab label="Aplicativo de Vendas"> 
+            <div class="mat-elevation-z8">
+                <table mat-table [dataSource]="dataSourceAP" class="tabela">
+              
+                  <ng-container matColumnDef="versao">
+                    <th mat-header-cell *matHeaderCellDef class="verdeClaro"> Versão </th>
+                    <td mat-cell *matCellDef="let element" (click)="verVersao(element)"> {{element.versao}} </td>
+                  </ng-container>
+              
+                  <ng-container matColumnDef="descricao">
+                    <th mat-header-cell *matHeaderCellDef class="verdeClaro"> Descrição </th>
+                    <td mat-cell *matCellDef="let element" (click)="verVersao(element)"> {{element.descricao}} </td>
+                  </ng-container>
+              
+                  <ng-container matColumnDef="chamadasResolvidas">
+                    <th mat-header-cell *matHeaderCellDef class="verdeClaro"> Chamadas Resolvidas </th>
+                    <td mat-cell *matCellDef="let element" (click)="verVersao(element)"> {{element.chamadasResolvidas}} </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="actions">
+                    <th mat-header-cell *matHeaderCellDef class="verdeClaro"> Ações </th>
+                    <td mat-cell *matCellDef="let element">
+                      <button *ngIf="isEditing" class="btn btn-link" (click)="editarVersao(element)">Editar</button>
+                      <button (click)="excluir(element)" *ngIf="isEditing" class="btn btn-danger">Excluir</button>
+                    </td>
+                  </ng-container>
+              
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+              
+                <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+            </div>              
+        </mat-tab>
+    </mat-tab-group>
+</main>  
+
+<div *ngIf="isAdmin" class="position-fixed custom">
+  <button type="button" class="btn btn-success" [routerLink]="['/add-versao']">Adicionar Nova Versão</button>
+  <button class="btn btn-warning" (click)="editar(element)">Editar</button>
+</div>
+
+<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen-custom" role="document">
+    <div class="modal-content visualizar">
+      <div class="modal-header">
+        <h5 class="modal-title" id="myModalLabel">Visualizar Chamada</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeModal()"></button>
+      </div>
+      <div class="modal-body">
+        <div class="versao">
+          <h3 id="version">{{ selectedVersion?.versao }}</h3>
+        </div>
+        <div class="resumoChamada">
+          <div class="chamadas">
+            <h3 class="h5">Chamadas Resolvidas</h3>
+            <div class="d-flex gap-2 mb-3">
+              <div *ngFor="let chamada of selectedVersion?.chamadas">
+                <button type="button" class="btn btn-success" (click)="verDescricaoChamada(chamada)">
+                  {{ chamada.Numero }}
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="descricaoChamada">
+            <h3 class="h5">Descrição da Chamada</h3>
+            <div id="descricaoChamada" style="height: 550px; width: 100%;">
+              {{ selectedChamada?.descricao || 'Selecione uma chamada.' }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeModal()">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>

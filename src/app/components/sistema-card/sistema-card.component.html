@@ -1,0 +1,20 @@
+<div class="sistema">
+    <h1>{{ sistemaNome }}</h1>
+    <div class="cards">
+      <div class="card" [ngClass]="{'red': sistemaNome === 'Gestor Matriz', 'azul': sistemaNome === 'SH Online', 'verde': sistemaNome === 'App de Vendas'}">
+        <p class="tip">{{ versaoAtual }}</p>
+        <p class="second-text">Versão Atual</p>
+      </div>
+
+      <div class="card" [ngClass]="{'blue': sistemaNome === 'Gestor Matriz', 'azul-claro': sistemaNome === 'SH Online', 'verde-claro': sistemaNome === 'App de Vendas'}">
+        <p class="tip">{{ proximaVersao }}</p>
+        <p class="second-text">Próxima Versão</p>
+      </div>
+      
+      <div class="card" [ngClass]="{'green': sistemaNome === 'Gestor Matriz', 'azul-escuro': sistemaNome === 'SH Online', 'amarelo': sistemaNome === 'App de Vendas'}">
+        <p class="tip">{{ chamadasResolvidas }}</p>
+        <p class="second-text">Chamadas Resolvidas</p>
+      </div>
+    </div>
+</div>
+  

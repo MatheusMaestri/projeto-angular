@@ -1,0 +1,91 @@
+<app-header></app-header>
+<mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
+
+<div class="container">
+    <form (ngSubmit)="onSubmit()" class="container">
+        <div class="formulario">
+            <button class="btn btn-secondary mb-3 mt-3" (click)="goBack()">Voltar</button>
+            <h1>Adicionar Nova Versão</h1>
+            <div class="form-group row mb-4">
+                <div class="form-group col-md-4 mb-3">
+                    <label for="versao">Versão:</label>
+                    <input type="text" class="form-control" [(ngModel)]="newVersion.versao" name="versao" required>
+                </div>
+                
+                <div class="form-group col-md-4 mb-4">
+                    <label for="sistema">Sistema:</label>
+                    <select id="sistema" [(ngModel)]="newVersion.sistema" name="sistema" class="form-control" required>
+                        <option value="" disabled selected>Selecione um sistema</option>
+                        <option value="Gestor Matriz">Gestor Matriz</option>
+                        <option value="SH Online">SH Online</option>
+                        <option value="App de Vendas">Aplicativo de Vendas</option>
+                    </select>
+                </div>
+
+                <div class="form-group col-md-4 d-flex align-items-center justify-content-center">
+                    <label for="ativo" class="me-2">Versão Liberada?</label>
+                    <input type="checkbox" id="ativo" [(ngModel)]="newVersion.ativo" name="ativo" class="form-check-input p-2" checked>
+                </div>
+            </div>
+    
+    
+            <div class="form-group mb-4">
+                <label for="descricoes">Descrição da Versão</label>
+                <textarea id="descricoes" [(ngModel)]="newVersion.descricoes" name="descricoes" class="form-control" required></textarea>
+            </div>
+    
+            <div class="form-group d-flex flex-column">
+                <div class="form-group w-100 d-flex justify-content-between">
+                    <label class="h5">Chamadas Relacioadas a Versão</label>
+                    <button type="button" class="btn btn-primary" (click)="openAddChamadaModal()">Adicionar Chamada</button>
+                </div>
+        
+                <div class="form-group d-flex flex-row border border-primary-subtle rounded w-100" style="min-height: 100px">
+                    <app-add-chamada
+                        (chamadaAdicionada)="adicionarChamada($event)"
+                        (fecharModalEvent)="modalAberto = false"
+                    ></app-add-chamada>
+                  
+
+                    <div *ngIf="newVersion.chamadas.length > 0" class="d-flex flex-row">
+                        <div *ngFor="let chamada of newVersion.chamadas">
+                            <button type="button" class="btn btn-success m-2" (click)="openChamadaOptions(chamada)">
+                                {{ chamada.numero }}
+                            </button>
+                        </div>
+                    </div>
+                    <div *ngIf="newVersion.chamadas.length === 0">
+                        <p class="text-muted">Nenhuma chamada adicionada.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-group w-100 d-flex justify-content-between mt-3">
+            <button type="button" class="btn btn-danger" (click)="goBack()">Cancelar</button>
+            <button type="submit" class="btn btn-success">Salvar Versão</button>
+        </div>
+    </form>
+</div>
+  
+
+
+<!-- ADICIONAR OU REMOVER -->
+<div id="chamadaOptionsModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title mb-0">Chamada {{ selectedChamada?.numero }}</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>O que deseja fazer com a chamada {{ selectedChamada?.numero }}?</p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-danger" (click)="selectedChamada && removeChamada(selectedChamada)" data-bs-dismiss="modal">Remover</button>
+            <button type="button" class="btn btn-warning" data-bs-dismiss="modal" (click)="openAddChamadaModal()">Editar</button>
+        </div>
+      </div>
+    </div>
+</div>
+  

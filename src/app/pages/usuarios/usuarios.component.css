@@ -13,3 +13,10 @@ main{
     gap: 20px;
 }
 
+@media only screen and (max-width: 580px) {
+    .container{
+        overflow-x: auto;
+        width: 100vw;
+    }
+}
+

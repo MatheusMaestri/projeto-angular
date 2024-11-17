@@ -9,7 +9,7 @@
     font-size: 20pt;
     text-align: center;
     position: relative;
-    margin: 30px 0 0 0;
+    margin: 30px 0 10px 0;
     font-weight: 500;
 }
 
@@ -20,7 +20,7 @@
     height: auto;
     justify-content: center;
     align-items: center;
-    width: 60vw;
+    width: 100%;
 }
 
 /* Gestor Matriz */
@@ -36,10 +36,10 @@
 
 /* SH Online */
 .card.azul {
-    background-color: #0d6eb2;
+    background-color: #3157ff;
 }
 .card.azul-claro {
-    background-color: #1944ff;
+    background-color: #0d41b2;
 }
 .card.azul-escuro {
     background-color: #043675;
@@ -55,8 +55,6 @@
 .card.amarelo {
     background-color: #279d4f;
 }
-  
-
 
 .cards .card {
     display: flex;
@@ -89,15 +87,37 @@
     transform: scale(1.1, 1.1);
 }
 
-.cards:hover > .card:not(:hover) {
-    filter: blur(2px);
-    transform: scale(0.9, 0.9);
+@media only screen and (max-width: 1024px) {
+
+    .cards{
+        width: 100%;
+        gap: 10px;
+    }
+
+    .cards .card {
+        width: 30vw;
+        height: 100px;
+    }
+
+    .cards .card p.tip{
+        font-size: 1.3em;
+    }
+
+    .cards .card p.second-text {
+        font-size: 1em;
+    }
+
 }
 
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 768px) {
+    .cards{
+        width: 100%;
+        gap: 10px;
+    }
+
     .cards .card {
-        width: 200px;
-        height: 100px;
+        width: 30vw;
+        height: 80px;
     }
 
     .cards .card p.tip{
@@ -105,15 +125,7 @@
     }
 
     .cards .card p.second-text {
-        font-size: .8em;
-    }
-
-}
-
-@media only screen and (max-width: 768px) {
-    .cards .card {
-        width: 180px;
-        height: 80px;
+        font-size: .9em;
     }
 }
 
@@ -121,9 +133,10 @@
     .cards{
         width: 100%;
         flex-direction: column;
+        gap: 10px;
     }
 
     .cards .card{
-        width: 200px;
+        width: 300px;
     }
 }

@@ -1,23 +1,26 @@
 <form *ngIf="perfilForm" [formGroup]="perfilForm" (ngSubmit)="onSubmit()">
-    <mat-form-field appearance="fill" class="form-group d-flex flex-column w-50">
-      <label for="nome" class="mb-3">Nome:</label>
-      <input matInput formControlName="nome" placeholder="Digite seu nome" name="nome">
-    </mat-form-field>
-  
-    <mat-form-field appearance="fill" class="form-group col-md-6 mb-3">
-      <label for="email" class="mb-3">Email:</label>
-      <input matInput formControlName="email" placeholder="Digite seu email" name="email">
-    </mat-form-field>
-  
-    <mat-form-field appearance="fill" class="form-group col-md-4 mb-3 ms-5">
-      <label for="senha" class="mb-3">Senha:</label>
-      <input matInput formControlName="senha" type="password" placeholder="Digite sua nova senha" name="senha">
-    </mat-form-field>
-  
-    <mat-slide-toggle formControlName="isAdmin" class="form-group col-md-9">
-      Administrador
-    </mat-slide-toggle>
-  
-    <button mat-raised-button color="primary" type="submit">Salvar Alterações</button>
+  <mat-form-field appearance="fill" class="form-group w-100 mb-3">
+    <label for="nome" class="mb-3">Nome:</label>
+    <input matInput formControlName="nome" placeholder="Digite seu nome" name="nome">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="form-group w-100 mb-3">
+    <label for="email" class="mb-3">Email:</label>
+    <input matInput formControlName="email" placeholder="Digite seu email" name="email">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="form-group w-100 mb-3">
+    <label for="senha" class="mb-3">Senha:</label>
+    <input matInput formControlName="senha" type="password" placeholder="Digite sua nova senha" name="senha">
+  </mat-form-field>
+
+  <mat-slide-toggle formControlName="isAdmin" class="form-group w-50 mb-3">
+    Administrador
+  </mat-slide-toggle>
+
+  <button mat-raised-button color="primary" type="submit" class="w-50">
+    Salvar Alterações
+  </button>
 </form>
+
   
